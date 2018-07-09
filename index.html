@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+</head>
+<body>
+
+	<!-- slider  -->
+
+	<style>
+		.outer-wrapper{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.slider-wrapper{
+			width: 100%;
+			height: 400px;
+			overflow: hidden;
+		}
+		.inner-wrapper{
+			width: 500%;
+			height: 100%;
+			position: relative;
+			left: -100%;
+		}
+		.slide{
+			width: calc(100%/5);
+			height: 100%;
+			float: left;
+			font-size: 100px;
+			color: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.button{
+			width: 30px;
+			height: 30px;
+			border-top: 2px solid #333;
+			position: absolute;
+			cursor: pointer;
+		}
+		.prev{
+			border-left: 2px solid #333;
+			left: 5%;
+			transform: rotate(-45deg);
+		}
+		.next{
+			border-right: 2px solid #333;
+			right: 5%;
+			transform: rotate(45deg);
+		}
+	</style>
+
+	<div class="container-fluid">
+		<div class="row outer-wrapper">
+			<div class="slider-wrapper">
+				<div class="inner-wrapper">
+					<div class="slide" style="background: #1976D2">1</div>
+					<div class="slide" style="background: #ef5350">2</div>
+					<div class="slide" style="background: #EC407A">3</div>
+					<div class="slide" style="background: #66BB6A">4</div>
+				</div>
+			</div>
+
+			<span class="button prev"></span>
+			<span class="button next"></span>
+		</div>
+	</div>
+
+
+	<script>
+		$(document).ready(function() {
+			var inwrap = $('.inner-wrapper');
+			$('.prev').on('click',function(){
+				inwrap.animate({left:'0%'},1200,function(){
+							inwrap.css('left','-100%');
+							$('.slide').first().before($('.slide').last());
+						}
+					);
+			});
+			$('.next').on('click',function(){
+				inwrap.animate({left:'-200%'},1200,
+						function(){
+							inwrap.css('left','-100%');
+							$('.slide').last().before($('.slide').first());
+						}
+					);
+			});
+
+
+		});
+	</script> 
+
+
+</body>
+</html>
