@@ -1,4 +1,4 @@
-# Simple jq slider (#simple-jq-slider)
+# Simple jq slider
 
 just copy or download the code and implement
 
